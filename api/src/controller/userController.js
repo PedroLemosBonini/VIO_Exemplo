@@ -1,5 +1,4 @@
-let users = [];
-
+const connect = require("../db/connect");
 module.exports = class userController {
   static async createUser(req, res) {
     const { cpf, email, password, name } = req.body;
@@ -15,26 +14,41 @@ module.exports = class userController {
     } else if (!email.includes("@")) {
       return res.status(400).json({ error: "Email inválido. Deve conter @" });
     }
+    else{
+      // Construção da query
+      const query = `INSERT INTO usuario (cpf, password, email, name) VALUES('${cpf}', '${password}', '${email}', '${name}')`;
 
-    // Verifica se já existe um usuário com o mesmo CPF
-    const existingUser = users.find((user) => user.cpf === cpf);
-    if (existingUser) {
-      return res.status(400).json({ error: "CPF já cadastrado" });
+      // Executando a query criada
+      try{
+        connect.query(query, function(err, results){
+          if(err){
+            console.log(err)
+            console.log(err.code)
+            if(err.code == 'ER_DUP_ENTRY'){
+              return res.status(400).json({error:"O email já está vinculado a outro usuário"})
+            }else{
+              return res.status(500).json({error:"Erro interno do servidor"})
+            }
+          }else{
+            return res.status(201).json({error:"Usuário criado com sucesso"})
+          }
+        })
+      }catch(error){
+        console.error(error);
+        res.status(500).json({error:"Erro interno do servidor"})
+
+      }
+
+      // Cria e adiciona novo usuário
     }
 
-    // Cria e adiciona novo usuário
-    const newUser = { cpf, email, password, name };
-    users.push(newUser);
-
-    return res
-      .status(201)
-      .json({ message: "Usuário criado com sucesso", user: newUser });
+    
   }
 
   static async getAllUsers(req, res) {
     return res
       .status(200)
-      .json({ message: "Obtendo todos os usuários", users });
+      .json({ message: "Obtendo todos os usuários" });
   }
 
   static async updateUser(req, res) {

@@ -8,7 +8,7 @@ class AppController {
     this.express = express(); //Cria uma nova instância do Express dentro da classe
     this.middlewares(); //Chama o método middlewares para configurar os middlewares
     this.routes(); //Chama o método routes para definir as rotas da API
-    //testConnect(); //Chama o método testConnect para checar a conexão com o MySQL
+    testConnect(); //Chama o método testConnect para checar a conexão com o MySQL
   }
 
   middlewares() {
