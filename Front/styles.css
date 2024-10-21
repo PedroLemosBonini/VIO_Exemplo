@@ -121,4 +121,7 @@ footer {
   border: solid 1px black;
   text-align: center;
   margin-bottom: 1%;
+  background-color: #6fadd4;
+  border-radius: 8px;
+  color: white;
 }
