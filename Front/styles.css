@@ -115,7 +115,7 @@ footer {
   bottom: 0; /* Posiciona o rodapé na parte inferior da página */
 }
 
-li {
+#user_list li {
   list-style-type: none;
   padding: 2%;
   border: solid 1px black;
