@@ -18,9 +18,7 @@
         <!-- Logo do site inserida com a tag <img>, que exibe uma imagem -->
         <img src="ingresso.png" alt="Logo do site" />
         <!-- Título principal do site, exibido dentro do cabeçalho -->
-        <h1>
-          IngressosFácil
-        </h1>
+        <h1>IngressosFácil</h1>
       </div>
       <!-- Parágrafo abaixo do título, dando uma breve descrição do site -->
       <p>Compre seus ingressos com facilidade</p>
@@ -41,9 +39,7 @@
 
     <!-- Conteúdo principal da página, onde informações principais são exibidas -->
     <main>
-      <section id="home">
-        Cadastro
-      </section>
+      <section id="home">Cadastro</section>
       <section>
         <form id="formulario_registro">
           <!-- Entrada do nome -->
@@ -59,13 +55,43 @@
           <label for="senha">Senha:</label>
           <input type="password" id="senha" name="senha" required />
           <!-- Botão para enviar formulário -->
-          <input type="submit" value="Cadastrar"/>
+          <input type="submit" value="Cadastrar" />
         </form>
       </section>
       <section>
         <!-- Lista para exibir os usuários cadastrados -->
         <h2>Usuários Cadastrados</h2>
         <ul id="user_list"></ul>
+      </section>
+
+      <section>
+        <h2>Usuários Cadastrados via Tabela</h2>
+        <table id="user_table">
+          <thead>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>E-Mail</th>
+
+            <tbody id="user_list_tabela">
+              <!-- Os usuários serão adicionados aqui -->
+            </tbody>
+          </thead>
+        </table>
+      </section>
+
+      <section>
+        <h2>Organizadores Cadastrados via Tabela</h2>
+        <table id="org_table">
+          <thead>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+          </thead>
+
+          <tbody id="org_lista_tabela">
+
+          </tbody>
+        </table>
       </section>
     </main>
 
@@ -75,9 +101,9 @@
       <p>&copy; 2024 IngressosFácil - Todos os direitos reservados</p>
     </footer>
     <script>
-        function mostrarMsg(){
-            alert("Olá! Você clicou no botão!");
-        }
+      function mostrarMsg() {
+        alert("Olá! Você clicou no botão!");
+      }
     </script>
     <script src="app.js"></script>
   </body>

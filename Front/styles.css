@@ -125,3 +125,45 @@ footer {
   border-radius: 8px;
   color: white;
 }
+
+#user_table th{
+  border: 1px solid black;
+  padding: 0.5% 0%;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #4a8fc7;
+  color: white;
+}
+
+#user_list_tabela td{
+  list-style-type: none;
+  padding: 2% 0%;
+  width: 100%;
+  border: solid 1px black;
+  text-align: center;
+  background-color: #6fadd4;
+  border-radius: 8px;
+  color: white;
+  margin: 2%;
+}
+
+#org_table th{
+  border: 1px solid black;
+  padding: 0.5% 0%;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #4a8fc7;
+  color: white;
+}
+
+#org_lista_tabela td{
+  list-style-type: none;
+  padding: 2% 0%;
+  width: 100%;
+  border: solid 1px black;
+  text-align: center;
+  background-color: #6fadd4;
+  border-radius: 8px;
+  color: white;
+  margin: 2%;
+}
