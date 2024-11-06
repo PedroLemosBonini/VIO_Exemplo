@@ -73,7 +73,7 @@ module.exports = class userController {
         return res
           .status(400)
           .json({ error: "Todos os campos devem ser preenchidos." });
-    } // Check se o telefone não é feito de números ou não tem 11 digitos
+    }
     const query = `UPDATE usuario SET name=?, email=?, password=?, cpf=? WHERE id_usuario = ?`
     const values = [name, email, password, cpf, id]
 

@@ -38,7 +38,7 @@ module.exports = class orgController {
               return res.status(500).json({error:"Erro interno do servidor"})
             }
           }else{
-            return res.status(201).json({error:"organizador criado com sucesso"})
+            return res.status(201).json({message:"organizador criado com sucesso"})
           }
         })
       }catch(error){
