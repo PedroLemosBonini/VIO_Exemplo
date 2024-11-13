@@ -123,4 +123,71 @@ module.exports = class eventoController {
       return res.status(500).json({ error: "Erro interno do servidor!" });
     }
   }
+
+  static async getEventosForData(req, res){
+    const query = `SELECT * FROM evento`
+    try {
+      connect.query(query,(err, results) => {
+        if(err){
+          console.error(err)
+          return res.status(400).json({error:"Erro ao buscar eventos"})
+        }
+        const dataEvento = new Date(results[0].data_hora)
+        const dia = dataEvento.getDate()
+        const mes = dataEvento.getMonth()
+        const ano = dataEvento.getFullYear()
+        console.log(dia + '/' + mes + '/' + ano);
+
+        const now = new Date()
+        const eventosPassados = results.filter(evento => new Date(evento.data_hora)<now)
+        const eventosFuturos = results.filter(evento => new Date(evento.data_hora)>=now)
+
+        const diferencaMs = eventosFuturos[0].data_hora.getTime() - now.getTime()
+        const dias = Math.floor(diferencaMs / (1000 * 60 * 60 * 24))
+        const horas = Math.floor(diferencaMs % (1000*60*60*24)/(1000*60*60))
+        console.log(diferencaMs, "Faltam: "+dias+" dias e "+horas+" horas")
+
+        //Comparar datas
+        const dataFiltro = new Date("2024-12-15").toISOString().split("T")
+        const eventosDia = results.filter(evento => new Date(evento.data_hora).toISOString().split("T")[0] === dataFiltro[0])
+
+        console.log("Eventos: ", eventosDia)
+
+        return res.status(200).json({message:"OK!",eventosPassados,eventosFuturos})
+      })
+    } catch (error) {
+      console.error(error)
+      return res.status(500).json({error:"Erro interno do servidor"})
+    }
+    
+  }
+
+  static async getEventosDias(req, res){
+    const {data} = req.params
+    const query = `SELECT * FROM evento`
+
+    const inicio = new Date(data)
+    const fim = new Date(inicio)
+    fim.setDate(fim.getDate() + 6)
+
+    
+    try {
+      connect.query(query,(err, results) => {
+        if(err){
+          console.log(err)
+          return res.status(400).json({error:"Erro ao obter eventos"})
+        }
+      
+        const semanal = results.filter((evento) => {const dataEvento = new Date(evento.data_hora)
+        return dataEvento >= inicio && fim <= fim
+        })
+
+        return res.status(200).json({message:"Eventos obtidos com sucesso: ", semanal})
+
+      })
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({error:"Erro interno do servidor"})
+    }
+  }
 };
