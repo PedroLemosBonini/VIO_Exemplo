@@ -135,7 +135,7 @@ footer {
   color: white;
 }
 
-#user_list_tabela td{
+#user-list-tabela td{
   list-style-type: none;
   padding: 2% 0%;
   width: 100%;
@@ -146,6 +146,8 @@ footer {
   color: white;
   margin: 2%;
 }
+
+
 
 #org_table th{
   border: 1px solid black;
@@ -167,3 +169,4 @@ footer {
   color: white;
   margin: 2%;
 }
+

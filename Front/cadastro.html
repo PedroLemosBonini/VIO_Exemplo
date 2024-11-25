@@ -52,6 +52,11 @@
           <label for="senha">Senha:</label>
           <input type="password" id="senha" name="senha" required />
           <!-- Botão para enviar formulário -->
+          <form id="form-selecao-data">
+            <label for="data">Data de nascimento: </label>
+            <input type="date" id="data" name="data" required/>
+            <input type="submit" value="Enviar">
+        </form>
           <input type="submit" value="Cadastrar" />
         </form>
       </section>
@@ -61,20 +66,21 @@
         <ul id="user_list"></ul>
       </section>
 
-      <!-- <section>
+      <section>
         <h2>Usuários Cadastrados via Tabela</h2>
         <table id="user_table">
           <thead>
             <th>Nome</th>
             <th>CPF</th>
             <th>E-Mail</th>
-
-            <tbody id="user_list_tabela">
-
-            </tbody>
+            <th>Data de Nascimento</th>
           </thead>
+
+            <tbody id="user-list-tabela">
+
+          </tbody>
         </table>
-      </section> -->
+      </section>
 
       <section>
         <h2>Organizadores Cadastrados via Tabela</h2>
